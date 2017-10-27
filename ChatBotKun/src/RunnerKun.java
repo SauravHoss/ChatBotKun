@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class RunnerKun 
 {
@@ -17,7 +18,7 @@ public class RunnerKun
 	 	{
 	 		ChatBotHossain chatbot1 = new ChatBotHossain();
 	 		
-	 		System.out.println (chatbot1.getGreeting());
+	 		System.out.println (chatbot1.instahi());
 	 		Scanner in = new Scanner (System.in);
 	 		String statement = in.nextLine();
 	 		
@@ -25,7 +26,7 @@ public class RunnerKun
 	 
 			while (!statement.equals("Bye"))
 	 		{
-	 			System.out.println (chatbot1.getResponse(statement));
+	 			System.out.println (chatbot1.theybetalkin(statement));
 	 			statement = in.nextLine();
 	 		}
 	 	}
