@@ -7,9 +7,9 @@ public class ChatBotHossain
 		return "You got something to say?";
 	}
 	
-	public String theybetalkin(String ugh) 
+	public String theybetalkin(String x) 
 	{
-		String blah = ugh.toLowerCase();
+		String blah = x.toLowerCase();
 		String wordz = "";
 		if (blah.length() == 0) 
 		{
