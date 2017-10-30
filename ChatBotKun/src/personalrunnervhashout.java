@@ -15,7 +15,7 @@ public class personalrunnervhashout
 		System.out.println("Please select a representative you would like to talk to.");
 		System.out.println("If you would like to talk to Mean Robbie Press '1'");
 		System.out.println("If you would like to talk to x Press '2'");
-		System.out.println("If you would like to talk to y Press '3'");
+		System.out.println("If you would like to talk to Weary Darren Press '3'");
 		System.out.println("If you would like to talk to z Press '4'");
 
 	
