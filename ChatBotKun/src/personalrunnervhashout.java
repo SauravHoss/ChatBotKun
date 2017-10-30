@@ -16,12 +16,10 @@ public class personalrunnervhashout
 		{
 			{
 	 			ChatBotHossain chatbot1 = new ChatBotHossain();
-	 		
-	 			System.out.println (chatbot1.instahi());	 		
 	 
 	 
 	 			while (!x.equals("Bye"))
-	 			{
+	 			{	
 	 				System.out.println (chatbot1.theybetalkin(x));
 	 				x = in.nextLine();
 	 			}
