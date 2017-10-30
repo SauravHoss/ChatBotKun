@@ -135,7 +135,7 @@ public class ChatBotZhu
 	 * Search for one word in phrase. The search is not case
 	 * sensitive. This method will check that the given goal
 	 * is not a substring of a longer string (so, for
-	 * example, "I know" does not contain "no").
+	 * example, "I know" does not contain "no"). 
 	 *
 	 * @param statement
 	 *            the string to search
