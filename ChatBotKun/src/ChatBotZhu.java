@@ -9,7 +9,7 @@ public class ChatBotZhu
 	 */	
 	public String getGreeting()
 	{
-		return "Hello, this is a suicide prevension hotline. My name is Darren.";
+		return "Hello, this is a suicide prevension hotline. My name is Weary Darren.";
 	}
 	
 	/**
@@ -36,7 +36,7 @@ public class ChatBotZhu
 		
 		else if (findKeyword(statement, "live") >= 0)
 		{
-			response = "Please tell me whats been bothering you.";
+			response = "Tell me whats been bothering you.";
 			frustration--;
 		}
 
@@ -76,7 +76,7 @@ public class ChatBotZhu
 		}
 		int psn = findKeyword (statement, "I want to", 0);
 		String restOfStatement = statement.substring(psn + 9).trim();
-		return "Why do you want to " + restOfStatement + "?";
+		return "Are you sure you want to " + restOfStatement + "?";
 	}
 
 	
@@ -99,7 +99,7 @@ public class ChatBotZhu
 		}
 		int psn = findKeyword (statement, "I want", 0);
 		String restOfStatement = statement.substring(psn + 6).trim();
-		return "How would your family and friends fell if you " + restOfStatement + "?";
+		return "How would your family and friends feel if you " + restOfStatement + "?";
 	}
 	
 	
