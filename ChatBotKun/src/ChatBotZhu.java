@@ -9,7 +9,7 @@ public class ChatBotZhu
 	 */	
 	public String getGreeting()
 	{
-		return "Hello, this is a suicide prevension hotline.";
+		return "Hello, this is a suicide prevension hotline. My name is Darren.";
 	}
 	
 	/**
