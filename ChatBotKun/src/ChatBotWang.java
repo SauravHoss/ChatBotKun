@@ -138,7 +138,8 @@ public class ChatBotWang
  	}
  	private int yesNoCounter (String mmwhatchusay)
  	// basically a way for the program to check how many yes/ no were said so the chatbot knows what to respond with
- 	{
+ 	// excpet the thing doesn't save its value which sucks
+	{
  		int a = 0;
  		while (a >= -3)
  		{
