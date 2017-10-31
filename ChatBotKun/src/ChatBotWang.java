@@ -1,4 +1,5 @@
 
+
 //Dave Wang depression help bot
 public class ChatBotWang
 {
@@ -136,10 +137,11 @@ public class ChatBotWang
  	{
  		return findKeyword (mmwhatchusay, goal, 0);
  	}
- 	private int yesNoCounter (String mmwhatchusay)
+ 	public int yesNoCounter (String mmwhatchusay)
  	// basically a way for the program to check how many yes/ no were said so the chatbot knows what to respond with
- 	// excpet the thing doesn't save its value which sucks
-	{
+ 	// except the thing doesn't save its value which sucks
+	// put while loop in runner then set chatbo1 = getresponse;
+ 	{
  		int a = 0;
  		while (a >= -3)
  		{
@@ -173,4 +175,3 @@ public class ChatBotWang
  	}
  	
 }
-
