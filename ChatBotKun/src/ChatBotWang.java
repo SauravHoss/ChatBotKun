@@ -1,6 +1,16 @@
 
 
 //Dave Wang depression help bot
+/* conversation flow
+	after input is yes for depression say why are you depressed
+		input statement will be because "blank" or something along the lines (maybe do something with 
+										      transform because statement)
+			respond with random cheer you up statements (i.e things can only get better etc, cheer up) works with 
+			depressionmeter -- if it gets to a high enough number respond with consult a professional
+			if detecting thank you respond you welcome;
+			then detect statements like ("i feel better or i feel great now") and return a statement and end the program
+	if detects want to die, respond with a bunch of information regarding suicide prevention and terminate the program with consult professional and not the chatbot
+*/
 public class ChatBotWang
 {
 	int depressionMeter = 0;
