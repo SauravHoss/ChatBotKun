@@ -13,37 +13,42 @@
 */
 public class ChatBotWang
 {
+	
+	int a = 0;
 	int depressionMeter = 0;
 	public String getGreeting()
 	{
-		return "Hello this is the depression help bot service, do you currently suffer from depression?";
+ 		return "Hello this is the depression help bot service, do you currently suffer from depression?";
 	}
-	
 	public String getResponse(String mmwhatchusay)
 	{
 		String response = "";
-		
-		 
+		a ++;
 		if (mmwhatchusay.length() == 0)
 		{
 			response = "Hello is anyone one there?";
+			
 		}
-		else if (blankCounter(mmwhatchusay) == 1 && mmwhatchusay.equals("yes") && yesNoCounter(mmwhatchusay) ==0)
+		else if ( mmwhatchusay.equals("yes") && a == 2)
 		{
 			
 			response = "I ask again do you suffer from depression?";
+			a = a ++;
 		}
-		else if (blankCounter(mmwhatchusay) == 1 && mmwhatchusay.equals("no") && yesNoCounter(mmwhatchusay) ==0)
+		else if (mmwhatchusay.equals("no") && a == 2)
 		{
 			response = "hhmmmm I see someone is present. So I'll ask again, do you suffer from depression";
+			a =a ++;
 		}
-		else if ((yesNoCounter(mmwhatchusay) ==1)&& mmwhatchusay.equals("no"))
+		else if (mmwhatchusay.equals("no") && (a == 3 || a == 1))
 		{
 			response = "Then you do no require my service, goodbye and have a nice day";
+			a = a ++;
 		}
-		else if ((yesNoCounter(mmwhatchusay) ==1) && mmwhatchusay.equals("yes"))
+		else if (mmwhatchusay.equals("yes") && (a == 3 || a == 1))
 		{
 			response = "why do you feel that way?";
+			a ++;
 		}
 			
 			
@@ -83,12 +88,12 @@ public class ChatBotWang
 				return true;
 			}
 				
-	}
+		}
 		
 	return false;
 
 	}
-	private int findKeyword(String mmwhatchusay, String goal, int startPos)
+	public static int findKeyword(String mmwhatchusay, String goal, int startPos)
  	{
  		String phrase = mmwhatchusay.trim().toLowerCase();
  		goal = goal.toLowerCase();
@@ -143,45 +148,11 @@ public class ChatBotWang
  	 * @param goal the string to search for
  	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
  	 */
- 	private int findKeyword(String mmwhatchusay, String goal)
+ 	public static int findKeyword(String mmwhatchusay, String goal)
  	{
  		return findKeyword (mmwhatchusay, goal, 0);
  	}
- 	public int yesNoCounter (String mmwhatchusay)
- 	// basically a way for the program to check how many yes/ no were said so the chatbot knows what to respond with
- 	// except the thing doesn't save its value which sucks
-	// put while loop in runner then set chatbo1 = getresponse;
- 	{
- 		int a = 0;
- 		while (a >= -3)
- 		{
- 			if (mmwhatchusay.length()==0) 
- 			{
- 			a --;	
- 			}
- 			if ((findKeyword(mmwhatchusay, "no" )) >= 0 || findKeyword(mmwhatchusay, "yes" ) >=0 )
- 			{
-			a ++;
- 			}
- 			
- 			return a;
- 		}
- 		return 0;
- 	}
- 	private int blankCounter (String mmwhatchusay)
- 	// basically a way for the program to check how many times you responded with a blank statement
- 	{
- 		int a = 0;
- 		while (a >= 0)
- 		{
- 			if (mmwhatchusay.length() ==0 )
-		{
-			a ++;
-			
-		}
- 		return a;
- 		}
- 		return 0;
- 	}
+ 	
+ 	
  	
 }
