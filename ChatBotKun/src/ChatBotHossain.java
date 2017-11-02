@@ -61,9 +61,7 @@ public class ChatBotHossain
 	
 	}
 
-
-
-	// if i need an rgn for stuff
+	// if i need an rgn for stuff idk i just wanted to learn to cast
 	private static int rgn(int range) 
 	{
 		return (int) Math.random()*range; //yay I learned to cast
