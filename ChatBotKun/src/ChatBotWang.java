@@ -58,20 +58,31 @@ public class ChatBotWang
 		
 		else if (ifDie(mmwhatchusay) == 2) {
 			depressionMeter -=20;
-			response = "Please don't say that";
+			response = "Please don't say that, instead lets play a game";
 		}
-		else if (ifDie(mmwhatchusay) == 2) 
+		else if (ifDie(mmwhatchusay) == 1) 
 			{
 				depressionMeter += 20;
 				response = "That is good to hear";
 			}
+		else if (depressionMeter <= -20 ) 
+		{
+			
+		}
+		else if (depressionMeter > -20 && depressionMeter < 0)
+		{
+			
+		}
+		if (depressionMeter > 0)
+		{
+			
+		}
+		
 		else 
 		{
 			response = getRandomResponse();
 		}
-		if (depressionMeter <= -10 ) {
-			
-		}
+		
 		
 	return response; 
 	
@@ -94,7 +105,7 @@ public class ChatBotWang
 			{
 				return 2;
 			}
-			else if (mmwhatchusay.indexOf("kill") !=0 && mmwhatchusay.indexOf("myself") !=0)	
+			else if (findKeyword(mmwhatchusay,"kill") >= 0 && findKeyword(mmwhatchusay,"myself") >=0)	
 			{
 				return 2;
 			}
@@ -196,9 +207,38 @@ public class ChatBotWang
 	};
 	private String [] randomYouNeedHelpResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
 	private String [] randomCheerYouUpResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	private void crossWordPuzzle ()
+	// words includes happy, live, love, intelligent, optimistic, sunny, lively, 
+	{
+		System.out.println("please seperate the words with a space (hint there are 7 word)");
+		System.out.println("C G X R I I O Q H L O V E J E V Q O");
+		System.out.println("N D T H N Q P W L Q A A V Q P T U X");
+		System.out.println("O M F Y T S T Y S I P U F E X R G A");
+		System.out.println("W A V B E Z I Y U U V H Z O F U S C");
+		System.out.println("D F H K L C M E F X N E O P C D K E");
+		System.out.println("U W A K L O I T Q M A N L G H X B G");
+		System.out.println("G S P R I J S J G F D A Y Y V R B A");
+		System.out.println("C M P M G N T I G Y O E B N H L D M");
+		System.out.println("X O Y Z E M I Z M B K R P H B I U A");
+		System.out.println("E P A F N Z C T R V W O C L P V A J");
+		System.out.println("W M J H T S H W J W N C L F Q E O N");
+		System.out.println("T Z A X N P K P R S E L E F F G G Z");
+												
+	}
 	
+	private int crosswordCounter(String mmwhatchusay)
+	{
+		mmwhatchusay = mmwhatchusay.toLowerCase();
+		if (findKeyword(mmwhatchusay, "lively") >=0 && findKeyword(mmwhatchusay, "live") >=0 && findKeyword(mmwhatchusay, "optimistic") >=0
+			&& findKeyword(mmwhatchusay, "intelligent") >=0 && findKeyword(mmwhatchusay, "sunny") >=0 && findKeyword(mmwhatchusay, "happy") >=0
+			&& findKeyword(mmwhatchusay, "love") >=0) 
+		{
+			return (7);
+		}
+		
+		return 0;
+	}
 }
 
- 	
 
 
