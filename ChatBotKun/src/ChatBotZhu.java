@@ -2,14 +2,14 @@ import java.util.Random;
 public class ChatBotZhu
 {
 	//Keep an frustration count. If the user is getting frustrated with this current chatbot an option is given to transfer user to another chatbot.
-	int frustration = 0;
 	/**
 	 * Get a default greeting 	
 	 * @return a greeting
 	 */	
 	public String getGreeting()
 	{
-		return "Hello, this is a suicide prevension hotline. My name is Weary Darren.";
+		return "Hello, this is a suicide prevension hotline. My name is Weary Darren. How can I be of assistance";
+
 	}
 	
 	/**
@@ -19,6 +19,7 @@ public class ChatBotZhu
 	 *            the user statement
 	 * @return a response based on the rules given
 	 */
+	int frustration = 0;
 	public String getResponse(String statement)
 	{
 		String response = "";
@@ -34,14 +35,14 @@ public class ChatBotZhu
 			frustration--;
 		}
 		
-		else if (findKeyword(statement, "live") >= 0)
+		else if (findKeyword(statement, "die") >= 0)
 		{
-			response = "Tell me whats been bothering you.";
+			response = "Please reconsider the effects of this on other people in your life.";
 			frustration--;
 		}
 
 		// Response transforming I want to statement
-		else if (findKeyword(statement, "I want to", 0) >= 0)
+		else if (findKeyword(statement, "How can", 0) >= 0)
 		{
 			response = transformIWantToStatement(statement);
 		}
@@ -51,7 +52,7 @@ public class ChatBotZhu
 		}	
 		else
 		{
-			response = getRandomResponse();
+			response = transferOperator();
 		}
 		
 		return response;
@@ -214,13 +215,9 @@ public class ChatBotZhu
 	 * Pick a default response to use if nothing else fits.
 	 * @return a non-committal string
 	 */
-	private String getRandomResponse ()
+	private String transferOperator()
 	{
 		Random r = new Random ();
-		if (frustration == 0)
-		{	
-			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
-		}
 		if (frustration < 0)
 		{	
 			return randomAngryResponses [r.nextInt(randomAngryResponses.length)];

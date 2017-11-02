@@ -3,16 +3,19 @@ import java.util.Scanner;
 public class personalrunnervhashout 
 {
 
-	//public static void main(String [] args)
+	public static void main(String [] args)
 	{
 
 		Scanner in = new Scanner (System.in);
 		System.out.println("Welcome To Happy Sad Care Center~");
 		System.out.println("Please select a representative you would like to talk to.");
+		System.out.println("1.Hossain ");
+		System.out.println("2.Wang ");
+		System.out.println("3.Zhu ");
 	
 		String x = in.nextLine();
 		
-		if (x.equals("0"))
+		if (x.equals("1"))
 		{
 			{
 	 			ChatBotHossain chatbot1 = new ChatBotHossain();
@@ -26,7 +29,7 @@ public class personalrunnervhashout
 	 		}
 		}
 		
-		if (x.equals("1"))
+		if (x.equals("2"))
 		{
 			{
 	 			ChatBotWang chatbot2 = new ChatBotWang();
@@ -41,8 +44,21 @@ public class personalrunnervhashout
 	 			}
 	 		}
 		}
+		if (x.equals("3"))
+		{
+			{
+	 			ChatBotZhu chatbot3 = new ChatBotZhu();
+	 		
+	 			System.out.println (chatbot3.getGreeting());	 		
+	 
+	 
+	 			while (!x.equals("Bye"))
+	 			{
+	 				System.out.println (chatbot3.getResponse(x));
+	 				x = in.nextLine();
+	 			}
+	 		}
+		}
 		
-	
-	
 	}
 }
