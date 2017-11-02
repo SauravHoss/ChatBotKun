@@ -39,35 +39,33 @@ public class ChatBotHossain
 		return wordz;
 	}
 
-public static void DidYouGetIt()
-{
-	Scanner usersguess = new Scanner(System.in);
-	Random com = new Random();
-	int rangeofnumberz = com.nextInt(10);
-	int ug;
-	boolean wowIneedthisorIwillcrash = false;
-	
-	while (wowIneedthisorIwillcrash == false) 
+	public static void DidYouGetIt()
 	{
-	ug = usersguess.nextInt();
+		Scanner usersguess = new Scanner(System.in);
+		Random com = new Random();
+		int rangeofnumberz = com.nextInt(10);
+		int ug;
+		boolean wowIneedthisorIwillcrash = false;
 	
-	if(ug == rangeofnumberz) 
+		while (wowIneedthisorIwillcrash == false) 
+		{
+			ug = usersguess.nextInt();
+	
+			if(ug == rangeofnumberz) 
+			{
+				wowIneedthisorIwillcrash = true;
+				System.out.print("Yay~");
+			}
+			else System.out.println("Try again");
+		}
+	
+	}
+
+
+
+	// if i need an rgn for stuff
+	private static int rgn(int range) 
 	{
-		wowIneedthisorIwillcrash = true;
-		System.out.print("Yay~");
+		return (int) Math.random()*range; //yay I learned to cast
 	}
-	else System.out.println("Try again");
-	}
-	
-}
-
-
-
-// if i need an rgn for stuff
-private static int rgn(int range) 
-{
-return (int) Math.random()*range; //yay I learned to cast
-}
-
-
 }
