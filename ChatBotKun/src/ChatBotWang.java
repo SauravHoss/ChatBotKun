@@ -1,4 +1,4 @@
-
+import java.util.Random;
 
 //Dave Wang depression help bot
 /* conversation flow
@@ -22,6 +22,7 @@ public class ChatBotWang
 	}
 	public String getResponse(String mmwhatchusay)
 	{
+		mmwhatchusay = mmwhatchusay.toLowerCase();
 		String response = "";
 		a ++;
 		if (mmwhatchusay.length() == 0)
@@ -31,37 +32,43 @@ public class ChatBotWang
 		}
 		else if ( mmwhatchusay.equals("yes") && a == 2)
 		{
-			
 			response = "I ask again do you suffer from depression?";
-			a = a ++;
 		}
 		else if (mmwhatchusay.equals("no") && a == 2)
 		{
-			response = "hhmmmm I see someone is present. So I'll ask again, do you suffer from depression";
-			a =a ++;
+			response = "hhmmmm I see someone is present. So I'll ask again, do you suffer from depression?";
 		}
 		else if (mmwhatchusay.equals("no") && (a == 3 || a == 1))
 		{
 			response = "Then you do no require my service, goodbye and have a nice day";
-			a = a ++;
 		}
 		else if (mmwhatchusay.equals("yes") && (a == 3 || a == 1))
 		{
 			response = "why do you feel that way?";
-			a ++;
 		}
-			
-			
-		else if (ifDie(mmwhatchusay) == true) {
-			depressionMeter -=10;
+		else if (negPre(mmwhatchusay) == true)
+		{
+			response = getRandomResponse();
+			depressionMeter --;
+		}
+		else if (mmwhatchusay.indexOf("thank you") != -1)
+		{
+			response = "You are welcome";
+		}
+		
+		else if (ifDie(mmwhatchusay) == 2) {
+			depressionMeter -=20;
 			response = "Please don't say that";
 		}
-		else if (ifDie(mmwhatchusay) == false) 
+		else if (ifDie(mmwhatchusay) == 2) 
 			{
-				depressionMeter += 10;
+				depressionMeter += 20;
 				response = "That is good to hear";
 			}
-		
+		else 
+		{
+			response = getRandomResponse();
+		}
 		if (depressionMeter <= -10 ) {
 			
 		}
@@ -69,7 +76,7 @@ public class ChatBotWang
 	return response; 
 	
 	}
-	private boolean ifDie (String mmwhatchusay)
+	private int ifDie (String mmwhatchusay)
 	{
 		// checks for statements containing the feeling of wanting to die
 		mmwhatchusay = mmwhatchusay.toLowerCase();
@@ -77,20 +84,23 @@ public class ChatBotWang
 		{
 			if ((findKeyword(mmwhatchusay, "dont") >=0 || findKeyword(mmwhatchusay, "don't") >=0) && findKeyword(mmwhatchusay, "die") >= 0)
 			{
-				return false;	
+				return 1;	
 			}			
 			else if ((findKeyword(mmwhatchusay, "die") >= 0) && findKeyword(mmwhatchusay, "want to") >=0)
 			{
-				return true;
+				return 2;
 			}
 			else if ((findKeyword(mmwhatchusay, "dont") >=0 || findKeyword(mmwhatchusay, "don't") >=0) && findKeyword(mmwhatchusay, "live") >= 0) 
 			{
-				return true;
+				return 2;
 			}
-				
+			else if (mmwhatchusay.indexOf("kill") !=0 && mmwhatchusay.indexOf("myself") !=0)	
+			{
+				return 2;
+			}
 		}
 		
-	return false;
+	return 0;
 
 	}
 	public static int findKeyword(String mmwhatchusay, String goal, int startPos)
@@ -152,7 +162,43 @@ public class ChatBotWang
  	{
  		return findKeyword (mmwhatchusay, goal, 0);
  	}
- 	
- 	
- 	
+ 	private boolean negPre (String mmwhatchusay)
+ 	// looks for negative prefixes/words to lower depression meter
+ 	{
+ 		
+ 		if (mmwhatchusay.indexOf("dis") != -1 || mmwhatchusay.indexOf("il") != -1 || findKeyword(mmwhatchusay, "hate") >=0)
+ 		{
+ 			return true;
+ 		}
+ 		return false;
+ 	}
+ 	private String getRandomResponse ()
+	{
+		Random r = new Random ();
+		if (depressionMeter == 0)
+		{	
+			return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
+		}
+		if (depressionMeter < 20)
+		{	
+			return randomYouNeedHelpResponses [r.nextInt(randomYouNeedHelpResponses.length)];
+		}	
+		return randomCheerYouUpResponses [r.nextInt(randomCheerYouUpResponses.length)];
+	}
+	
+	private String [] randomNeutralResponses = {"Interesting, tell me more",
+			"Hmmm.",
+			"Do you really think so?",
+			"You don't say.",
+			"It's all boolean to me.",
+			"So, would you like to go for a walk?",
+			"Could you say that again?"
+	};
+	private String [] randomYouNeedHelpResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
+	private String [] randomCheerYouUpResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+	
 }
+
+ 	
+
+
