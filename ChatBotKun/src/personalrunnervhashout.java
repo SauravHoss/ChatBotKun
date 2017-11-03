@@ -99,14 +99,6 @@ public class personalrunnervhashout
 		{
 			System.out.println("Please using # to select an operator.");
 			main(null);
-		
-		if (!x.equals("1") && !x.equals("2") && !x.equals("3") )
-		{
-			System.out.println("Please using # to select an operator.");
-			main(null);
-		}
-		
-		  
 		}
 	}
 }
