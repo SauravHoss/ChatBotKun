@@ -4,13 +4,15 @@ import java.util.Scanner;
 //Dave Wang depression help bot
 public class ChatBotWang
 {
-	Scanner in = new Scanner (System.in);
+	Scanner s = new Scanner (System.in);
 	int a = 0;
 	int depressionMeter = 0;
+	
 	public String getGreeting()
 	{
- 		return "Hello this is the depression help bot service do you currently suffer from depression?";
+ 		return "Hello this is the depression help bot service, do you currently suffer from depression?";
 	}
+	
 	public String getResponse(String input)
 	{
 		input = input.toLowerCase();
@@ -19,19 +21,29 @@ public class ChatBotWang
 		// a goes up whenever you input something, a rudimentary way of counting the amount of yes and no inputed 
 		// useful since the beginning of the conversation is guided and the user can basically only type in yes or no
 		
-		if (findKeyword(input, "no") >=0 && (a == 1))
+		if (findKeyword(input, "no") >=0 && (a == 2))
+		// if you dont need help with depression then you talk with Darren's bot
 		{
-			response =  "Then you do no require my service, goodbye and have a nice day";
+			System.out.println("Then you do no require my service, goodbye and have a nice day, Please consult with Darren for other issues");
+			ChatBotZhu chatbot1 = new ChatBotZhu();
+			
+			System.out.println (chatbot1.getGreeting());
+			String statement = s.nextLine();
+			
+
+
+			while (!statement.equals("Bye"))
+			{
+				System.out.println (chatbot1.getResponse(statement));
+				statement = s.nextLine();
+			}
 		}
-		else if (findKeyword(input, "yes") >=0 && (a == 1))
+		
+		else if (findKeyword(input, "yes") >=0 && (a == 2))
 		{
 			response =  "what can be the cause of this?";
 		}
-		else if (negPre(input) == true)
-		{
-			depressionMeter --;
-			response = getRandomResponse();
-		}
+		
 		// just in case people say thank you for what ever reason
 		else if (input.indexOf("thank you") != -1)
 		{
@@ -43,123 +55,129 @@ public class ChatBotWang
 			or if something like i want to die is said it will prompt to play the puzzle
 		*/
 		else if ( (findKeyword(input, "yes") >=0 || findKeyword(input, "okay") >= 0 
-				|| findKeyword(input, "sure") >=0) && (a  >=3))
+				|| findKeyword(input, "sure") >= 0 || findKeyword(input, "i do") >=0) && (a  >=3))
 		{
 			depressionMeter += 10;
 			response = wordsearchPuzzle();
 		}
+		
 		else if ((findKeyword(input, "no") >=0 || findKeyword(input, "nah") >=0 ) && (a >= 3))
 		{
-			response =  "It's okay there is always next time";
+			depressionMeter--;
+			response = "sorry I tought it would help";
 		}
+		
 		// word search puzzle and its outputs
+		// random outputs if you fail and congratulations when you pass
+		// gives answers when you give up
+		// if it didn't help depressionMeter goes down
 		else if (findKeyword(input, "nevergiveup") >=0 || findKeyword(input, "cheerful") >=0 || 
 				findKeyword(input, "optimistic") >=0  || findKeyword(input, "joyful") >=0 
 				|| findKeyword(input, "brightside") >=0 || findKeyword(input, "smile") >=0) 
 		{
-			wordsearchCounter(input);
-			int wrong = wordsearchCounter(input);
-			int right = 6 - wordsearchCounter(input);		
-			response = "you are missing" +" "+ wrong + " " + "word(s) and got" + " " + right + " " + "correct";
-			if (wrong == 0)
+			if ((input.indexOf("nevergiveup") !=-1 || input.indexOf("cheerful") !=-1 || 
+					input.indexOf("joyful") !=-1  || input.indexOf("smile") !=-1
+				|| input.indexOf("brightside") !=-1 || input.indexOf("optimistic") !=-1))
 			{
-				return response = response + " " + "congratulatiosn you got them all right! now do you feel better?";
+				response = "congratulatiosn you got them all right! now do you feel better?";
 			}
-			else if (wrong < 3)
+			else 
 			{
-				response = response + " " + "so close!";
-			}
-			else if (wrong >= 3)
-			{
-				response = response + " " + "keep trying and never give up";
+				response = randomYouCanDoIt ();
 			}
 		}
-		else if ((input.indexOf("no") != -1 || findKeyword(input, "nah") >=0 ) && a >= 5)
+		// if user inputs give up sends answers
+		else if (input.indexOf("give up") !=-1)
 		{
-			depressionMeter--;
-			response = "sorry I couldn't help much";
+			response = "The answers were nevergiveup, brightside, smile, joyful, cheerful, optimistic,"
+					+ System.lineSeparator() + "Don't worry about this failing doesn't mean anything";
 		}
+		
 		else if (depressionMeter == -5)
 		{
 			response = "Let's change the subject, wanna play with a wordsearch puzzle";
 		}
+		
 		// response to statements such as wanting to die :(
 		else if (ifDie(input) == 2 ) 
 		{
 			response = "Please don't say that, do you want to do a cross word puzzle instead?";
 		}
+		
 		else if (ifDie(input) == 1) 
 		{
 			depressionMeter += 10;
 			response = "That is good to hear";
 		}
+		
 		// way to toggle between bots
 		else if (input.equals("switch to 1"))
 		{
 			ChatBotHossain chatbot1 = new ChatBotHossain();
 			
 			System.out.println (chatbot1.hey());
-			String statement = in.nextLine();
+			String statement = s.nextLine();
 			
 
 
 			while (!statement.equals("Bye"))
 			{
 				System.out.println (chatbot1.theybetalkin(statement));
-				statement = in.nextLine();
+				statement = s.nextLine();
 			}
 		}
+		
 		else if (input.equals("switch to 3"))
 		{
 			ChatBotZhu chatbot1 = new ChatBotZhu();
 			
 			System.out.println (chatbot1.getGreeting());
-			String statement = in.nextLine();
+			String statement = s.nextLine();
 			
 
 
 			while (!statement.equals("Bye"))
 			{
 				System.out.println (chatbot1.getResponse(statement));
-				statement = in.nextLine();
+				statement = s.nextLine();
 			}
 		}
 		
-		if (input.equals("switch to 1"))
-		{
-			ChatBotHossain chatbot1 = new ChatBotHossain();
-			System.out.println (chatbot1.hey());
-			Scanner in = new Scanner (System.in);
-			String mmwhatchusay = in.nextLine();
+		//blank return so the bot doesn't input a extra blank statement
+		else if (findKeyword(input, "2",0) >= 0)
+		{			
 			
-
-
-			while (!mmwhatchusay.equals("Bye"))
-			{
-				System.out.println (chatbot1.theybetalkin(mmwhatchusay));
-				mmwhatchusay = in.nextLine();
-			}
 		}
-		
-		else if (input.equals("switch to 4"))
+		else if (depressionMeter <= -10)
 		{
-			ChatBotSun chatbot1 = new ChatBotSun();
+			System.out.println("This is level of sadness can not be resolved by simple means, I suggest you consult with my bot friend Darren");
+			ChatBotZhu chatbot1 = new ChatBotZhu();
+			
 			System.out.println (chatbot1.getGreeting());
-			Scanner in = new Scanner (System.in);
-			String mmwhatchusay = in.nextLine();
+			String statement = s.nextLine();
 			
-		
 
-			while (!mmwhatchusay.equals("bye"))
+
+			while (!statement.equals("Bye"))
 			{
-				System.out.println (chatbot1.getResponse(mmwhatchusay));
-				mmwhatchusay = in.nextLine();
+				System.out.println (chatbot1.getResponse(statement));
+				statement = s.nextLine();
 			}
 		}
 		
-		
-		
+		//responses to happy/positive statements
+		else if (pos(input)== true)
+		{
+			depressionMeter ++;
+			response = getRandomResponse();
+		}
 		// responses to random statements
+		else if (negPre(input) == true)
+		{
+			depressionMeter --;
+			response = getRandomResponse();
+		}
+		
 		else 
 		{
 			response = getRandomResponse();
@@ -169,6 +187,7 @@ public class ChatBotWang
 	return response; 
 	
 	}
+
 	private int ifDie (String input)
 	{
 		// checks for statements containing the feeling of wanting to die
@@ -200,7 +219,7 @@ public class ChatBotWang
 	return 0;
 
 	}
-	public static int findKeyword(String input, String goal, int startPos)
+	private int findKeyword(String input, String goal, int startPos)
  	{
  		String phrase = input.trim().toLowerCase();
  		goal = goal.toLowerCase();
@@ -255,10 +274,23 @@ public class ChatBotWang
  	 * @param goal the string to search for
  	 * @return the index of the first occurrence of goal in statement or -1 if it's not found
  	 */
- 	public static int findKeyword(String input, String goal)
+ 	private int findKeyword(String input, String goal)
  	{
  		return findKeyword (input, goal, 0);
  	}
+ 	private boolean pos (String input)
+ 	// searches for positive words and or positive prefixes
+ 	{
+ 		if (input.indexOf("ben") != -1  || findKeyword(input, "love") >=0 || input.indexOf("bene") != -1 
+ 				|| findKeyword(input, "good") >=0 || findKeyword(input, "better") >=0)
+ 		{
+ 			return true;
+ 		}
+ 		return false;
+ 	}
+ 	
+ 	
+ 	
  	private boolean negPre (String input)
  	// looks for negative prefixes/words to lower depression meter
  	{
@@ -270,9 +302,10 @@ public class ChatBotWang
  		}
  		return false;
  	}
- 	// random response based on the depressionMeter
+ 	
  	private String getRandomResponse ()
-	{
+ // random response based on the depressionMeter
+ 	{
 		Random r = new Random ();
 		if (depressionMeter >= 0)
 		{	
@@ -290,12 +323,11 @@ public class ChatBotWang
 	}
 	
 	private String [] randomHappyResponses = {"glad you are feeling better",
-			"Hmmm.",
-			"Do you really think so?",
-			"You don't say.",
-			"It's all boolean to me.",
-			"So, would you like to go for a walk?",
-			"Could you say that again?"
+			"I am happier than ever before",
+			"Wow!",
+			"I like you",
+			"You dont seem so sad",
+			"That is good to hear",
 	};
 	private String [] randomYouNeedHelpResponses = {"This is serious please get help from an professional",
 			"I am not programmed to deal with this level of depression"};
@@ -313,35 +345,29 @@ public class ChatBotWang
 				+ System.lineSeparator() + "F A S Q C C Z D C B F C X U F"
 				+ System.lineSeparator() + "I C W E D I S T H G I R B A B"
 				+ System.lineSeparator() + "E J Q T F T X D E K I F C L I"
-				+ System.lineSeparator() + "E M X R M S A T E K W J T U U"
+				+ System.lineSeparator() + "E M X R M S A T	E K W J T U U"
 				+ System.lineSeparator() + "P L O U B I V D R C J C X I P"
 				+ System.lineSeparator() + "W I I C T M Z D F F K J O X I"
 				+ System.lineSeparator() + "E N R M Z I Z U U M K D Q G G"
 				+ System.lineSeparator() + "G V P J S T V R L M I A V S E"
 				+ System.lineSeparator() + "J L N Q Q P K F U I I N U B D"
 				+ System.lineSeparator() + "O H T S N O K T J Z U K Q P I"
-				+ System.lineSeparator() + "Y F A W J M S V O H F Q E K C"
+				+ System.lineSeparator() + "Y F A W J M S V	O H F Q E K C"
 				+ System.lineSeparator() + "F R G D J H O J N H X J G K D"
 				+ System.lineSeparator() + "U Q G G Q N R T C Q S W T C J"
 				+ System.lineSeparator() + "L P B J J P C Q E R L G N U U"
-				+ System.lineSeparator() + "Y N C K N E V E R G I V E U P");
+				+ System.lineSeparator() + "Y N C K N E V E R G I V	E U P");
 	}
-	// a while loop that counts how many words are missing from your input
-	private int wordsearchCounter(String input)
+	
+	private String randomYouCanDoIt ()
+	//random keep trying responses for the word search puzzle
 	{
-		int wrong = 0;
-		while (wrong <=6)
-		{
-			if (findKeyword(input, "nevergiveup") <= -1 || findKeyword(input, "cheerful")<= -1 || 
-				findKeyword(input, "optimistic") <=-1  || findKeyword(input, "joyful") <=-1
-				|| findKeyword(input, "brightside") <=-1 || findKeyword(input, "smile") <=-1) 
-			{
-				wrong ++;
-				
-			}
-			return wrong;
-		}
-		return 0;
+		Random g = new Random();
+		return randomrandomYouCanDoIt [g.nextInt(randomrandomYouCanDoIt.length)];
 	}
+	private String [] randomrandomYouCanDoIt = 
+	{ 
+			"Oh not quite, but keep trying", "Come on don't give up", "Almost done", "You can do it!"
+	};
 
 }
