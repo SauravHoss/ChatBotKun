@@ -1,4 +1,12 @@
 import java.util.Random;
+
+/**
+ * A program to carry on conversations with a human user.
+ * This version:
+ * @author Darren Zhu
+ * @version November 2017
+ */
+
 public class ChatBotZhu
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
