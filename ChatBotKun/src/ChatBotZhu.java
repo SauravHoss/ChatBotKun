@@ -75,6 +75,11 @@ public class ChatBotZhu
 				response = "Have you tried speaking to a therapist?";
 				emotion--;
 			}
+			else if (findKeyword(statement, "kill") >= 0)
+			{
+				response = "Please refrain from doing something you might regret.";
+				emotion--;
+			}
 			else if (findKeyword(statement, "happy") >= 0)
 			{
 				response = "Happiness will lead to a fulfilling life!";
