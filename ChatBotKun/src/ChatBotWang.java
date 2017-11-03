@@ -281,18 +281,18 @@ public class ChatBotWang
 				+ System.lineSeparator() + "F A S Q C C Z D C B F C X U F"
 				+ System.lineSeparator() + "I C W E D I S T H G I R B A B"
 				+ System.lineSeparator() + "E J Q T F T X D E K I F C L I"
-				+ System.lineSeparator() + "E M X R M S A T	E K W J T U U"
+				+ System.lineSeparator() + "E M X R M S A T E K W J T U U"
 				+ System.lineSeparator() + "P L O U B I V D R C J C X I P"
 				+ System.lineSeparator() + "W I I C T M Z D F F K J O X I"
 				+ System.lineSeparator() + "E N R M Z I Z U U M K D Q G G"
 				+ System.lineSeparator() + "G V P J S T V R L M I A V S E"
 				+ System.lineSeparator() + "J L N Q Q P K F U I I N U B D"
 				+ System.lineSeparator() + "O H T S N O K T J Z U K Q P I"
-				+ System.lineSeparator() + "Y F A W J M S V	O H F Q E K C"
+				+ System.lineSeparator() + "Y F A W J M S V O H F Q E K C"
 				+ System.lineSeparator() + "F R G D J H O J N H X J G K D"
 				+ System.lineSeparator() + "U Q G G Q N R T C Q S W T C J"
 				+ System.lineSeparator() + "L P B J J P C Q E R L G N U U"
-				+ System.lineSeparator() + "Y N C K N E V E R G I V	E U P");
+				+ System.lineSeparator() + "Y N C K N E V E R G I V E U P");
 	}
 	// a while loop that counts how many words are missing from your input
 	private int wordsearchCounter(String input)
