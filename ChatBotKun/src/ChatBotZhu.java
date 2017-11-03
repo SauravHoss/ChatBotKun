@@ -355,7 +355,7 @@ public class ChatBotZhu
 			 */
 			if (emotion < -2)
 			{	
-				return "Would you like to switch to a different representative? If you do please respond with 'switch me' ";
+				return "You seem frustrated. Would you like to switch to a different representative? If you do please respond with 'switch me' ";
 			}	
 			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 		}
