@@ -4,7 +4,7 @@ import java.util.Scanner;
 //Dave Wang depression help bot
 public class ChatBotWang
 {
-	
+	Scanner in = new Scanner (System.in);
 	int a = 0;
 	int depressionMeter = 0;
 	public String getGreeting()
@@ -19,11 +19,11 @@ public class ChatBotWang
 		// a goes up whenever you input something, a rudimentary way of counting the amount of yes and no inputed 
 		// useful since the beginning of the conversation is guided and the user can basically only type in yes or no
 		
-		if (findKeyword(input, "no") >=0 && (a == 2))
+		if (findKeyword(input, "no") >=0 && (a == 1))
 		{
 			response =  "Then you do no require my service, goodbye and have a nice day";
 		}
-		else if (findKeyword(input, "yes") >=0 && (a == 2))
+		else if (findKeyword(input, "yes") >=0 && (a == 1))
 		{
 			response =  "what can be the cause of this?";
 		}
@@ -40,15 +40,15 @@ public class ChatBotWang
 		
 		/* the way to start the word search puzzle
 			basically after depression meter hits -5 there will be a prompt to play the game
-			since every input
+			or if something like i want to die is said it will prompt to play the puzzle
 		*/
 		else if ( (findKeyword(input, "yes") >=0 || findKeyword(input, "okay") >= 0 
-				|| findKeyword(input, "sure") >=0) && (a <= 6 || a  >=2))
+				|| findKeyword(input, "sure") >=0) && (a  >=3))
 		{
 			depressionMeter += 10;
 			response = wordsearchPuzzle();
 		}
-		else if ((findKeyword(input, "no") >=0 || findKeyword(input, "nah") >=0 ) && (a <= 6 || a  >=2))
+		else if ((findKeyword(input, "no") >=0 || findKeyword(input, "nah") >=0 ) && (a >= 3))
 		{
 			response =  "It's okay there is always next time";
 		}
@@ -94,12 +94,11 @@ public class ChatBotWang
 			response = "That is good to hear";
 		}
 		// way to toggle between bots
-		if (input.equals("switch to 1"))
+		else if (input.equals("switch to 1"))
 		{
 			ChatBotHossain chatbot1 = new ChatBotHossain();
 			
 			System.out.println (chatbot1.hey());
-			Scanner in = new Scanner (System.in);
 			String statement = in.nextLine();
 			
 
@@ -110,12 +109,11 @@ public class ChatBotWang
 				statement = in.nextLine();
 			}
 		}
-		if (input.equals("switch to 3"))
+		else if (input.equals("switch to 3"))
 		{
 			ChatBotZhu chatbot1 = new ChatBotZhu();
 			
 			System.out.println (chatbot1.getGreeting());
-			Scanner in = new Scanner (System.in);
 			String statement = in.nextLine();
 			
 
@@ -280,11 +278,11 @@ public class ChatBotWang
 		{	
 			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 		}
-		if (depressionMeter < 0 && depressionMeter > -10)
+		else if (depressionMeter < 0 && depressionMeter > -10)
 		{
 			return randomCheerYouUpResponses [r.nextInt(randomCheerYouUpResponses.length)];
 		}
-		if (depressionMeter < 20)
+		else if (depressionMeter < 20)
 		{	
 			return randomYouNeedHelpResponses [r.nextInt(randomYouNeedHelpResponses.length)];
 		}	
@@ -315,18 +313,18 @@ public class ChatBotWang
 				+ System.lineSeparator() + "F A S Q C C Z D C B F C X U F"
 				+ System.lineSeparator() + "I C W E D I S T H G I R B A B"
 				+ System.lineSeparator() + "E J Q T F T X D E K I F C L I"
-				+ System.lineSeparator() + "E M X R M S A T	E K W J T U U"
+				+ System.lineSeparator() + "E M X R M S A T E K W J T U U"
 				+ System.lineSeparator() + "P L O U B I V D R C J C X I P"
 				+ System.lineSeparator() + "W I I C T M Z D F F K J O X I"
 				+ System.lineSeparator() + "E N R M Z I Z U U M K D Q G G"
 				+ System.lineSeparator() + "G V P J S T V R L M I A V S E"
 				+ System.lineSeparator() + "J L N Q Q P K F U I I N U B D"
 				+ System.lineSeparator() + "O H T S N O K T J Z U K Q P I"
-				+ System.lineSeparator() + "Y F A W J M S V	O H F Q E K C"
+				+ System.lineSeparator() + "Y F A W J M S V O H F Q E K C"
 				+ System.lineSeparator() + "F R G D J H O J N H X J G K D"
 				+ System.lineSeparator() + "U Q G G Q N R T C Q S W T C J"
 				+ System.lineSeparator() + "L P B J J P C Q E R L G N U U"
-				+ System.lineSeparator() + "Y N C K N E V E R G I V	E U P");
+				+ System.lineSeparator() + "Y N C K N E V E R G I V E U P");
 	}
 	// a while loop that counts how many words are missing from your input
 	private int wordsearchCounter(String input)
