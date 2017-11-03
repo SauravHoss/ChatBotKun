@@ -1,6 +1,7 @@
 import java.util.Random;
 import java.util.Scanner;
 
+// Saurav Hossain ChatBot
 public class ChatBotHossain 
 {
 	// says hi to break the ice
@@ -105,7 +106,7 @@ public class ChatBotHossain
 		System.out.println("So let's get to it.");
 		System.out.println("I'm going to pick a number between 0 and 10.");
 		System.out.println("Guess it and I'll let you in on something. Only guess numbers though, I don't wanna crash.");
-		System.out.println("If you wanna stop type in -1, but promise you will atleast try to beat me fair and square once");
+		System.out.println("If you wanna stop, type in -1, but promise you will atleast try to beat me fair and square once");
 		System.out.println("Go ahead put in a number");
 		DidYouGetIt();
 	}

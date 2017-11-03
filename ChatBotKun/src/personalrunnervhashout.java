@@ -29,12 +29,8 @@ public class personalrunnervhashout
 		System.out.println("1.Hossain ");
 		System.out.println("2.Wang ");
 		System.out.println("3.Zhu ");
-<<<<<<< HEAD
 		System.out.println("4.Sun");
 	
-=======
-		System.out.println("to switch between bots, type switch to (# of the bot)");
->>>>>>> branch 'master' of https://github.com/SauravHoss/ChatBotKun.git
 		String x = in.nextLine();
 		
 		if (x.equals("1"))
