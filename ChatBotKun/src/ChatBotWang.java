@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 //Dave Wang depression help bot
 public class ChatBotWang
@@ -8,7 +9,7 @@ public class ChatBotWang
 	int depressionMeter = 0;
 	public String getGreeting()
 	{
- 		return "Hello this is the depression help bot service, do you currently suffer from depression?";
+ 		return "Hello this is the depression help bot service do you currently suffer from depression?";
 	}
 	public String getResponse(String input)
 	{
@@ -18,11 +19,11 @@ public class ChatBotWang
 		// a goes up whenever you input something, a rudimentary way of counting the amount of yes and no inputed 
 		// useful since the beginning of the conversation is guided and the user can basically only type in yes or no
 		
-		if (findKeyword(input, "no") >=0 && (a == 1))
+		if (findKeyword(input, "no") >=0 && (a == 2))
 		{
 			response =  "Then you do no require my service, goodbye and have a nice day";
 		}
-		else if (findKeyword(input, "yes") >=0 && (a == 1))
+		else if (findKeyword(input, "yes") >=0 && (a == 2))
 		{
 			response =  "what can be the cause of this?";
 		}
@@ -92,6 +93,42 @@ public class ChatBotWang
 			depressionMeter += 10;
 			response = "That is good to hear";
 		}
+		// way to toggle between bots
+		if (input.equals("switch to 1"))
+		{
+			ChatBotHossain chatbot1 = new ChatBotHossain();
+			
+			System.out.println (chatbot1.hey());
+			Scanner in = new Scanner (System.in);
+			String statement = in.nextLine();
+			
+
+
+			while (!statement.equals("Bye"))
+			{
+				System.out.println (chatbot1.theybetalkin(statement));
+				statement = in.nextLine();
+			}
+		}
+		if (input.equals("switch to 3"))
+		{
+			ChatBotZhu chatbot1 = new ChatBotZhu();
+			
+			System.out.println (chatbot1.getGreeting());
+			Scanner in = new Scanner (System.in);
+			String statement = in.nextLine();
+			
+
+
+			while (!statement.equals("Bye"))
+			{
+				System.out.println (chatbot1.getResponse(statement));
+				statement = in.nextLine();
+			}
+		}
+		
+		
+		
 		// responses to random statements
 		else 
 		{
@@ -278,4 +315,3 @@ public class ChatBotWang
 	}
 
 }
-
