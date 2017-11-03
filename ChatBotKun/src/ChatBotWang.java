@@ -4,7 +4,7 @@ import java.util.Scanner;
 //Dave Wang depression help bot
 public class ChatBotWang
 {
-	
+	Scanner in = new Scanner (System.in);
 	int a = 0;
 	int depressionMeter = 0;
 	public String getGreeting()
@@ -19,11 +19,11 @@ public class ChatBotWang
 		// a goes up whenever you input something, a rudimentary way of counting the amount of yes and no inputed 
 		// useful since the beginning of the conversation is guided and the user can basically only type in yes or no
 		
-		if (findKeyword(input, "no") >=0 && (a == 2))
+		if (findKeyword(input, "no") >=0 && (a == 1))
 		{
 			response =  "Then you do no require my service, goodbye and have a nice day";
 		}
-		else if (findKeyword(input, "yes") >=0 && (a == 2))
+		else if (findKeyword(input, "yes") >=0 && (a == 1))
 		{
 			response =  "what can be the cause of this?";
 		}
@@ -40,15 +40,15 @@ public class ChatBotWang
 		
 		/* the way to start the word search puzzle
 			basically after depression meter hits -5 there will be a prompt to play the game
-			since every input
+			or if something like i want to die is said it will prompt to play the puzzle
 		*/
 		else if ( (findKeyword(input, "yes") >=0 || findKeyword(input, "okay") >= 0 
-				|| findKeyword(input, "sure") >=0) && (a <= 6 || a  >=2))
+				|| findKeyword(input, "sure") >=0) && (a  >=3))
 		{
 			depressionMeter += 10;
 			response = wordsearchPuzzle();
 		}
-		else if ((findKeyword(input, "no") >=0 || findKeyword(input, "nah") >=0 ) && (a <= 6 || a  >=2))
+		else if ((findKeyword(input, "no") >=0 || findKeyword(input, "nah") >=0 ) && (a >= 3))
 		{
 			response =  "It's okay there is always next time";
 		}
@@ -94,12 +94,11 @@ public class ChatBotWang
 			response = "That is good to hear";
 		}
 		// way to toggle between bots
-		if (input.equals("switch to 1"))
+		else if (input.equals("switch to 1"))
 		{
 			ChatBotHossain chatbot1 = new ChatBotHossain();
 			
 			System.out.println (chatbot1.hey());
-			Scanner in = new Scanner (System.in);
 			String statement = in.nextLine();
 			
 
@@ -110,12 +109,11 @@ public class ChatBotWang
 				statement = in.nextLine();
 			}
 		}
-		if (input.equals("switch to 3"))
+		else if (input.equals("switch to 3"))
 		{
 			ChatBotZhu chatbot1 = new ChatBotZhu();
 			
 			System.out.println (chatbot1.getGreeting());
-			Scanner in = new Scanner (System.in);
 			String statement = in.nextLine();
 			
 
@@ -248,11 +246,11 @@ public class ChatBotWang
 		{	
 			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 		}
-		if (depressionMeter < 0 && depressionMeter > -10)
+		else if (depressionMeter < 0 && depressionMeter > -10)
 		{
 			return randomCheerYouUpResponses [r.nextInt(randomCheerYouUpResponses.length)];
 		}
-		if (depressionMeter < 20)
+		else if (depressionMeter < 20)
 		{	
 			return randomYouNeedHelpResponses [r.nextInt(randomYouNeedHelpResponses.length)];
 		}	
