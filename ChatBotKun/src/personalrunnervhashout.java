@@ -12,7 +12,7 @@ public class personalrunnervhashout
 		System.out.println("1.Hossain ");
 		System.out.println("2.Wang ");
 		System.out.println("3.Zhu ");
-	
+		System.out.println("to switch between bots, type switch to (# of the bot)");
 		String x = in.nextLine();
 		
 		if (x.equals("1"))
