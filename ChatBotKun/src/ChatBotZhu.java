@@ -125,7 +125,37 @@ public class ChatBotZhu
 					System.out.println (chatbot1.getResponse(mmwhatchusay));
 					mmwhatchusay = in.nextLine();
 				}
-			}	
+			}
+			 if (statement.equals("switch to 1"))
+				{
+					ChatBotHossain chatbot1 = new ChatBotHossain();
+					System.out.println (chatbot1.hey());
+					Scanner in = new Scanner (System.in);
+					String mmwhatchusay = in.nextLine();
+					
+
+
+					while (!mmwhatchusay.equals("Bye"))
+					{
+						System.out.println (chatbot1.theybetalkin(mmwhatchusay));
+						mmwhatchusay = in.nextLine();
+					}
+				}
+			 else if (statement.equals("switch to 2"))
+				{
+					ChatBotWang chatbot1 = new ChatBotWang();
+					System.out.println (chatbot1.getGreeting());
+					Scanner in = new Scanner (System.in);
+					String mmwhatchusay = in.nextLine();
+					
+
+
+					while (!mmwhatchusay.equals("bye"))
+					{
+						System.out.println (chatbot1.getResponse(mmwhatchusay));
+						mmwhatchusay = in.nextLine();
+					}
+				}
 			
 			return response;
 		}

@@ -127,6 +127,38 @@ public class ChatBotWang
 			}
 		}
 		
+		if (input.equals("switch to 1"))
+		{
+			ChatBotHossain chatbot1 = new ChatBotHossain();
+			System.out.println (chatbot1.hey());
+			Scanner in = new Scanner (System.in);
+			String mmwhatchusay = in.nextLine();
+			
+
+
+			while (!mmwhatchusay.equals("Bye"))
+			{
+				System.out.println (chatbot1.theybetalkin(mmwhatchusay));
+				mmwhatchusay = in.nextLine();
+			}
+		}
+		
+		else if (input.equals("switch to 4"))
+		{
+			ChatBotSun chatbot1 = new ChatBotSun();
+			System.out.println (chatbot1.getGreeting());
+			Scanner in = new Scanner (System.in);
+			String mmwhatchusay = in.nextLine();
+			
+		
+
+			while (!mmwhatchusay.equals("bye"))
+			{
+				System.out.println (chatbot1.getResponse(mmwhatchusay));
+				mmwhatchusay = in.nextLine();
+			}
+		}
+		
 		
 		
 		// responses to random statements

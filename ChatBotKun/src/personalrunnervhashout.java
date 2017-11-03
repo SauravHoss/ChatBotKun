@@ -2,6 +2,23 @@ import java.util.Scanner;
 
 public class personalrunnervhashout 
 {
+	
+	/*Features:
+	 * User can input anything within the guidelines for an enjoyable experience.
+	 * User can switch between bots in any random order using the command "switch to x"
+	   where x is the number of the bot in the directory.
+	 * All bots are meant to help users who are suicidal and depressed. (Type in negative phrases to see how effective they are)  
+	 *Bot 1 is a play bot that helps the user through playing a game.
+	 *Bot 2 is a cheerful bot that consoles and brings light to life in a interesting way.
+	 *Bot 3 is a honest bot that only wants the best for the user.
+	 *Bot 4 is a relatable bot.
+	 *
+	 *Important Notes: 
+	 *Heed what the bots say in the instructions for a fully functional experience.
+	 *
+	 *In Depth Notes (PLEASE READ ME)
+	 *
+	 */
 
 	public static void main(String [] args)
 	{
@@ -12,6 +29,7 @@ public class personalrunnervhashout
 		System.out.println("1.Hossain ");
 		System.out.println("2.Wang ");
 		System.out.println("3.Zhu ");
+		System.out.println("4.Sun");
 	
 		String x = in.nextLine();
 		
@@ -27,6 +45,7 @@ public class personalrunnervhashout
 	 				System.out.println (chatbot1.theybetalkin(x));
 	 				x = in.nextLine();
 	 			}
+	 			
 	 		}
 		}
 		
@@ -60,11 +79,33 @@ public class personalrunnervhashout
 	 			}
 	 		}
 		}
-		if (!x.equals("1") && !x.equals("2") && !x.equals("3"))
+		
+		if (x.equals("4"))
+		{
+			{
+	 			ChatBotSun chatbot4 = new ChatBotSun();
+	 		
+	 			System.out.println (chatbot4.getGreeting());	 		
+	 
+	 
+	 			while (!x.equals("Bye"))
+	 			{
+	 				System.out.println (chatbot4.getResponse(x));
+	 				x = in.nextLine();
+	 			}
+	 		}
+		}
+		if (!x.equals("1") && !x.equals("2") && !x.equals("3") && !x.equals("4"))
+		{
+			System.out.println("Please using # to select an operator.");
+			main(null);
+		
+		if (!x.equals("1") && !x.equals("2") && !x.equals("3") )
 		{
 			System.out.println("Please using # to select an operator.");
 			main(null);
 		}
 		  
 	}
+}
 }

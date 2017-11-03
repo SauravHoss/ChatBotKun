@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 public class ChatBotSun 
 {
@@ -19,7 +20,7 @@ public class ChatBotSun
 		 */	
 		public String getGreeting()
 		{
-			return "What's up borthers and sisters?";
+			return "What's up brothers and sisters?";
 		}
 		
 		/**
@@ -59,9 +60,62 @@ public class ChatBotSun
 			{
 				response = transformIWantStatement(statement);
 			}	
+			else if (findKeyword(statement, "4",0) >= 0)
+			{			
+				
+			}
 			else
 			{
 				response = getRandomResponse();
+			}
+			
+			if (statement.equals("switch to 1"))
+			{
+				ChatBotHossain chatbot1 = new ChatBotHossain();
+				System.out.println (chatbot1.hey());
+				Scanner in = new Scanner (System.in);
+				String mmwhatchusay = in.nextLine();
+				
+
+
+				while (!mmwhatchusay.equals("Bye"))
+				{
+					System.out.println (chatbot1.theybetalkin(mmwhatchusay));
+					mmwhatchusay = in.nextLine();
+				}
+			}
+			
+			if (statement.equals("switch to 2"))
+			{
+				ChatBotWang chatbot1 = new ChatBotWang();
+				System.out.println (chatbot1.getGreeting());
+				Scanner in = new Scanner (System.in);
+				String mmwhatchusay = in.nextLine();
+				
+
+
+				while (!mmwhatchusay.equals("bye"))
+				{
+					System.out.println (chatbot1.getResponse(mmwhatchusay));
+					mmwhatchusay = in.nextLine();
+				}
+			}
+			
+			if (statement.equals("switch to 3"))
+			{
+				ChatBotZhu chatbot1 = new ChatBotZhu();
+				
+				System.out.println (chatbot1.getGreeting());
+				Scanner in = new Scanner (System.in);
+				statement = in.nextLine();
+				
+
+
+				while (!statement.equals("Bye"))
+				{
+					System.out.println (chatbot1.getResponse(statement));
+					statement = in.nextLine();
+				}
 			}
 			
 			return response;
