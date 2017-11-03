@@ -68,7 +68,10 @@ public class ChatBotSun
 			{
 				response = getRandomResponse();
 			}
-			
+			if(statement.equals("bye")) 
+			{
+				System.exit(0);
+			}
 			if (statement.equals("switch to 1"))
 			{
 				ChatBotHossain chatbot1 = new ChatBotHossain();

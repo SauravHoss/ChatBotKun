@@ -97,6 +97,10 @@ public class ChatBotHossain
 		{
 			wordz = randomcom();
 		}
+		if(x.equals("bye")) 
+		{
+			System.exit(0);
+		}
 		
 		return wordz;
 	}

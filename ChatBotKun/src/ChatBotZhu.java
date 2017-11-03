@@ -111,6 +111,11 @@ public class ChatBotZhu
 			{
 				response = getRandomResponse();
 			}
+			if(statement.equals("bye")) 
+			{
+				System.exit(0);
+			}
+			
 			 if (statement.equals("switch to 4"))
 			{
 				ChatBotSun chatbot1 = new ChatBotSun();

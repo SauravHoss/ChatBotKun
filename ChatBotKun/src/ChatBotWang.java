@@ -110,6 +110,11 @@ public class ChatBotWang
 			response = "That is good to hear";
 		}
 		
+		if(input.equals("bye")) 
+		{
+			System.exit(0);
+		}
+		
 		// way to toggle between bots
 		else if (input.equals("switch to 1"))
 		{
