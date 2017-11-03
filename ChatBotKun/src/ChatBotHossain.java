@@ -95,7 +95,7 @@ public class ChatBotHossain
 	}
 
 	private static String rc()
-	{
+	{ ////wtf
 		Random g = new Random();
 		return challengephrases[g.nextInt(challengephrases.length)];
 	}
