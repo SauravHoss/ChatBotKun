@@ -319,3 +319,4 @@ public class ChatBotZhu
 		private String [] randomHappyResponses = {"Surround yourself with people who can love you!", "There is always people you can find with shared interest.", "Everyone has a place in the world."};
 		
 }	 
+ 
