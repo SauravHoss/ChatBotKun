@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Scanner;
 
 /**
  * A program to carry on conversations with a human user.
@@ -110,6 +111,21 @@ public class ChatBotZhu
 			{
 				response = getRandomResponse();
 			}
+			 if (statement.equals("switch to 4"))
+			{
+				ChatBotSun chatbot1 = new ChatBotSun();
+				System.out.println (chatbot1.getGreeting());
+				Scanner in = new Scanner (System.in);
+				String mmwhatchusay = in.nextLine();
+				
+
+
+				while (!mmwhatchusay.equals("Bye"))
+				{
+					System.out.println (chatbot1.getResponse(mmwhatchusay));
+					mmwhatchusay = in.nextLine();
+				}
+			}	
 			
 			return response;
 		}

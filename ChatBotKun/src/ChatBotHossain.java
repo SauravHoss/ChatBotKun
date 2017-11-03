@@ -30,15 +30,17 @@ public class ChatBotHossain
 		
 		else if (blah.contains("hello") || blah.contains("hi") || blah.contains("hey") || blah.contains("greetings") || blah.contains("sup")) 
 		{
-			wordz += "Robbie: What's crakalakin homie";
+			wordz += "Robbie: What's crakalakin homie? Wanna play a game?";
 		}
 		
-		else if (blah.contains("don't want to live") || blah.contains("don't wanna to live"))
+		else if (blah.contains("yes") || blah.contains("sure") || blah.contains("ok"))
 		{
-			wordz += "Robbie: Now you listen to me and listen good. Killing yourself is the most selfish thing you have could ever do.";
- 
+		wordz += ("Aight. I've been looking forward to sharing my skills with someone.");
+		ugh();
 		}
-		if (x.equals("switch to 2"))
+		
+		
+		else if (x.equals("switch to 2"))
 		{
 			ChatBotWang chatbot1 = new ChatBotWang();
 			System.out.println (chatbot1.getGreeting());
@@ -57,6 +59,16 @@ public class ChatBotHossain
 		return wordz;
 	}
 
+	public static void ugh() 
+	{
+		System.out.println("So let's get to it.");
+		System.out.println("I'm going to pick a number between 0 and 10.");
+		System.out.println("Guess it and I'll let you in on something");
+		DidYouGetIt();
+	}
+		
+
+	
 	public static void DidYouGetIt()
 	{
 		Scanner usersguess = new Scanner(System.in);
@@ -64,7 +76,8 @@ public class ChatBotHossain
 		int rangeofnumberz = com.nextInt(10);
 		int ug;
 		boolean wowIneedthisorIwillcrash = false;
-	
+		
+		
 		while (wowIneedthisorIwillcrash == false) 
 		{
 			ug = usersguess.nextInt();
@@ -72,12 +85,26 @@ public class ChatBotHossain
 			if(ug == rangeofnumberz) 
 			{
 				wowIneedthisorIwillcrash = true;
-				System.out.print("Yay~");
+				System.out.println("Ayy you got it.");
+				rc();
+				DidYouGetIt();
+				
 			}
-			else System.out.println("Try again");
+			else System.out.println("Nah man, try again.");
 		}
-	
 	}
+
+	private static String rc()
+	{
+		Random g = new Random();
+		return challengephrases[g.nextInt(challengephrases.length)];
+	}
+	
+	private static String [] challengephrases = { "Best Two out of Three", "Bet you can't beat me again", "OMG CAN U STOP"}; 
+
+
+
+
 
 	// if i need an rgn for stuff idk i just wanted to learn to cast
 	private static int rgn(int range) 

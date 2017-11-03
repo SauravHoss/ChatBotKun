@@ -1,6 +1,8 @@
+import java.util.Random;
+
 public class ChatBotSun 
 {
-	import java.util.Random;
+	
 
 	/**
 	 * A program to carry on conversations with a human user.
@@ -8,8 +10,7 @@ public class ChatBotSun
 	 * @author Mr. Levin
 	 * @version September 2017
 	 */ 
-	public class ChatBotSun
-	{
+	
 		//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
 		int emotion = 0;
 		/**
@@ -251,4 +252,3 @@ public class ChatBotSun
 	}
 
 
-}
