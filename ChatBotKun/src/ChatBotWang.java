@@ -4,8 +4,8 @@ import java.util.Scanner;
 //Dave Wang depression help bot
 public class ChatBotWang
 {
-	Scanner s = new Scanner (System.in);
 	int a = 0;
+	Scanner s = new Scanner (System.in);
 	int depressionMeter = 0;
 	
 	public String getGreeting()
@@ -17,11 +17,13 @@ public class ChatBotWang
 	{
 		input = input.toLowerCase();
 		String response = "";
-		a ++;
 		// a goes up whenever you input something, a rudimentary way of counting the amount of yes and no inputed 
 		// useful since the beginning of the conversation is guided and the user can basically only type in yes or no
-		
-		if (findKeyword(input, "no") >=0 && (a == 2))
+		if (yesNoCounter(input) == true)
+		{
+			a ++;
+		}
+		if (findKeyword(input, "no") >=0 && (a == 1))
 		// if you dont need help with depression then you talk with Darren's bot
 		{
 			System.out.println("Then you do no require my service, goodbye and have a nice day, Please consult with Darren for other issues");
@@ -39,7 +41,7 @@ public class ChatBotWang
 			}
 		}
 		
-		else if (findKeyword(input, "yes") >=0 && (a == 2))
+		else if (findKeyword(input, "yes") >=0 && (a == 1))
 		{
 			response =  "what can be the cause of this?";
 		}
@@ -55,13 +57,14 @@ public class ChatBotWang
 			or if something like i want to die is said it will prompt to play the puzzle
 		*/
 		else if ( (findKeyword(input, "yes") >=0 || findKeyword(input, "okay") >= 0 
-				|| findKeyword(input, "sure") >= 0 || findKeyword(input, "i do") >=0) && (a  >=3))
+				|| findKeyword(input, "sure") >= 0 || findKeyword(input, "i do") >=0) && (a  > 2))
 		{
 			depressionMeter += 10;
 			response = wordsearchPuzzle();
 		}
 		
-		else if ((findKeyword(input, "no") >=0 || findKeyword(input, "nah") >=0 ) && (a >= 3))
+		else if ((findKeyword(input, "no") >=0 || findKeyword(input, "nah") >=0 ) && 
+				response.equals("congratulatiosn you got them all right! now do you feel better?"))
 		{
 			depressionMeter--;
 			response = "sorry I tought it would help";
@@ -90,7 +93,7 @@ public class ChatBotWang
 		else if (input.indexOf("give up") !=-1)
 		{
 			response = "The answers were nevergiveup, brightside, smile, joyful, cheerful, optimistic,"
-					+ System.lineSeparator() + "Don't worry about this failing doesn't mean anything";
+					+ System.lineSeparator() + "Don't worry about this failure doesn't mean anything";
 		}
 		
 		else if (depressionMeter == -5)
@@ -110,7 +113,7 @@ public class ChatBotWang
 			response = "That is good to hear";
 		}
 		
-		if(input.equals("bye")) 
+		else if(input.equals("bye")) 
 		{
 			System.exit(0);
 		}
@@ -192,7 +195,14 @@ public class ChatBotWang
 	return response; 
 	
 	}
-
+	private boolean yesNoCounter(String input)
+	{
+		if (findKeyword(input, "no") >=0 || findKeyword(input, "yes") >=0)
+		{
+			return true;
+		}
+		return false;
+	}
 	private int ifDie (String input)
 	{
 		// checks for statements containing the feeling of wanting to die
@@ -224,6 +234,7 @@ public class ChatBotWang
 	return 0;
 
 	}
+	
 	private int findKeyword(String input, String goal, int startPos)
  	{
  		String phrase = input.trim().toLowerCase();

@@ -19,7 +19,6 @@ public class personalrunnervhashout
 
 	public static void main(String [] args)
 	{
-
 		Scanner in = new Scanner (System.in);
 		System.out.println("Welcome To Happy Sad Care Center~");
 		System.out.println("Please select a representative you would like to talk to.");
@@ -30,7 +29,6 @@ public class personalrunnervhashout
 		System.out.println("To switch between bots type in 'switch to x', where x is the corresponding number of the bot.");
 	
 		String x = in.nextLine();
-		
 		if (x.equals("1"))
 		{
 			{
