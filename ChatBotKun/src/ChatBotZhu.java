@@ -2,11 +2,12 @@ import java.util.Random;
 public class ChatBotZhu
 {
 	//emotion can alter the way our bot responds. Emotion can become more negative or positive over time.
-		int emotion = 0;
+		
 		/**
 		 * Get a default greeting 	
 		 * @return a greeting
 		 */	
+
 		public String getGreeting()
 		{
 			return "My name is Darren. How can I be of service to you?";
@@ -19,6 +20,7 @@ public class ChatBotZhu
 		 *            the user statement
 		 * @return a response based on the rules given
 		 */
+		int emotion = 0;
 		public String getResponse(String statement)
 		{
 			String response = "";
@@ -36,8 +38,43 @@ public class ChatBotZhu
 			
 			else if (findKeyword(statement, "suicide") >= 0)
 			{
-				response = "Suicide is not the answer?";
+				response = "Suicide is not the answer.";
 				emotion--;
+			}
+			else if (findKeyword(statement, "you dont understand") >= 0)
+			{
+				response = "Please explain further.";
+				emotion--;
+			}
+			else if (findKeyword(statement, "hate") >= 0)
+			{
+				response = "Hate is not the answer. Love is and will always be.";
+				emotion--;
+			}
+			else if (findKeyword(statement, "help") >= 0)
+			{
+				response = "Please tell me what you need help with.";
+				emotion--;
+			}
+			else if (findKeyword(statement, "depression") >= 0)
+			{
+				response = "Have you tried speaking to a therapist?";
+				emotion--;
+			}
+			else if (findKeyword(statement, "depressed") >= 0)
+			{
+				response = "Have you tried speaking to a therapist?";
+				emotion--;
+			}
+			else if (findKeyword(statement, "happy") >= 0)
+			{
+				response = "Happiness will lead to a fulfilling life!";
+				emotion++;
+			}
+			else if (findKeyword(statement, "thank") >= 0)
+			{
+				response = "It's my pleasure to help!";
+				emotion++;
 			}
 
 			// Response transforming I want to statement
@@ -45,10 +82,22 @@ public class ChatBotZhu
 			{
 				response = transformIWantToStatement(statement);
 			}
+			else if (findKeyword(statement, "I need", 0) >= 0)
+			{
+				response = transformINeedToStatement(statement);
+			}
 			else if (findKeyword(statement, "I want",0) >= 0)
 			{
 				response = transformIWantStatement(statement);
-			}	
+			}
+			else if (findKeyword(statement, "I would like to switch",0) >= 0)
+			{
+				transfer();
+			}
+			else if (findKeyword(statement, "3",0) >= 0)
+			{			
+				
+			}
 			else
 			{
 				response = getRandomResponse();
@@ -59,7 +108,7 @@ public class ChatBotZhu
 		
 		/**
 		 * Take a statement with "I want to <something>." and transform it into 
-		 * "Why do you want to <something>?"
+		 * "How would your friends and family feel if you <something>?"
 		 * @param statement the user statement, assumed to contain "I want to"
 		 * @return the transformed statement
 		 */
@@ -76,13 +125,34 @@ public class ChatBotZhu
 			}
 			int psn = findKeyword (statement, "I want to", 0);
 			String restOfStatement = statement.substring(psn + 9).trim();
-			return "How would your friends and family fell if you " + restOfStatement + "?";
+			return "How would your friends and family feel if you " + restOfStatement + "?";
+		}
+		/**
+		 * Take a statement with "I need <something>." and transform it into 
+		 * "Please explain why you need <something>."
+		 * @param statement the user statement, assumed to contain "I want"
+		 * @return the transformed statement
+		 */
+		private String transformINeedToStatement(String statement)
+		{
+			//  Remove the final period, if there is one
+			statement = statement.trim();
+			String lastChar = statement.substring(statement
+					.length() - 1);
+			if (lastChar.equals("."))
+			{
+				statement = statement.substring(0, statement
+						.length() - 1);
+			}
+			int psn = findKeyword (statement, "I need", 0);
+			String restOfStatement = statement.substring(psn + 6).trim();
+			return "Please explain why you need " + restOfStatement + ".";
 		}
 
 		
 		/**
 		 * Take a statement with "I want <something>." and transform it into 
-		 * "Would you really be happy if you had <something>?"
+		 * "If you <something>, what good would it do?"
 		 * @param statement the user statement, assumed to contain "I want"
 		 * @return the transformed statement
 		 */
@@ -99,7 +169,7 @@ public class ChatBotZhu
 			}
 			int psn = findKeyword (statement, "I want", 0);
 			String restOfStatement = statement.substring(psn + 6).trim();
-			return "If " + restOfStatement + "can make you happy. It is good.";
+			return "If you " + restOfStatement + ", what good would it do?";
 		}
 		
 		
@@ -221,22 +291,31 @@ public class ChatBotZhu
 			{	
 				return randomNeutralResponses [r.nextInt(randomNeutralResponses.length)];
 			}
-			if (emotion < 0)
+			/**
+			 * As the emotion decrease, the user is getting more frustrated so an offer in made to transfer to a different chatbot.
+			 */
+			if (emotion < -2)
 			{	
-				return randomAngryResponses [r.nextInt(randomAngryResponses.length)];
+				return "Would you like to switch to a different representative? If you do please respond with 'I would like to switch' ";
 			}	
 			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
+		}
+		/**
+		 * transfer() returns the user to the main method where they will see the representative selection page again.
+		 */
+		private static void transfer()
+		{
+			personalrunnervhashout.main(null);
 		}
 		
 		private String [] randomNeutralResponses = {"Please tell me more about your situation",
 				"Do you want to talk more about it?",
-				"",
-				"",
-				"",
-				"",
-				""
+				"Yes, please elaborate.",
+				"Tell me all the good in your life.",
+				"Sharing can be a form of healing.",
+				"Life will always have its ups and downs.",
+				"The key to fulfillment is finding something you enjoy. "
 		};
-		private String [] randomAngryResponses = {"Bahumbug.", "Harumph", "The rage consumes me!"};
-		private String [] randomHappyResponses = {"H A P P Y, what's that spell?", "Today is a good day", "You make me feel like a brand new pair of shoes."};
+		private String [] randomHappyResponses = {"Surround yourself with people who can love you!", "There is always people you can find with shared interest.", "Everyone has a place in the world."};
 		
 }	 
