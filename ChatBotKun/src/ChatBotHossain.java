@@ -34,7 +34,21 @@ public class ChatBotHossain
 			wordz += "Now you listen to me and listen good. Killing yourself is the most selfish thing you have could ever do. When you kill yourself you are hurting everyone who loves you to an unbearable extent. "
 					+ "If you are too much of a wimp to live by yourself then live for those who can't bear to see you die." ;
 		}
-				
+		if (x.equals("switch to 2"))
+		{
+			ChatBotWang chatbot1 = new ChatBotWang();
+			System.out.println (chatbot1.getGreeting());
+			Scanner in = new Scanner (System.in);
+			String mmwhatchusay = in.nextLine();
+			
+
+
+			while (!mmwhatchusay.equals("Bye"))
+			{
+				System.out.println (chatbot1.getResponse(mmwhatchusay));
+				mmwhatchusay = in.nextLine();
+			}
+		}	
 
 		return wordz;
 	}
