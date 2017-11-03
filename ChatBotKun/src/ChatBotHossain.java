@@ -5,37 +5,37 @@ public class ChatBotHossain
 {
 	public String hey() 
 	{
-		return "Hey there"; // why ivan get a push error i no has brain cells anymore
+		return "Robbie: What's up?"; // why ivan get a push error i no has brain cells anymore
 	}
 	
 	public String theybetalkin(String x) 
 	{
 		String blah = x.toLowerCase();
-		String wordz = "Robbie: ";
+		String wordz = " ";
 		
 		if (x.equals("0"))
 		{ 
-			wordz += "You got something to say?";
+			wordz += "Robbie: You got something to say?";
 		}
 		
 		if (blah.length() == 0) 
 		{
-			wordz += "You gonna say something?";
+			wordz += "Robbie: You gonna say something?";
 		}
 		
 		else if (blah.contains("lol"))
 		{
-			wordz += "Say 'kek' instead you normie";
+			wordz += "Robbie: Say 'kek' instead you normie";
 		}
 		
 		else if (blah.contains("hello") || blah.contains("hi") || blah.contains("hey") || blah.contains("greetings") || blah.contains("sup")) 
 		{
-			wordz += "What's crakalakin homie";
+			wordz += "Robbie: What's crakalakin homie";
 		}
 		
 		else if (blah.contains("don't want to live") || blah.contains("don't wanna to live"))
 		{
-			wordz += "Now you listen to me and listen good. Killing yourself is the most selfish thing you have could ever do.";
+			wordz += "Robbie: Now you listen to me and listen good. Killing yourself is the most selfish thing you have could ever do.";
  
 		}
 		if (x.equals("switch to 2"))

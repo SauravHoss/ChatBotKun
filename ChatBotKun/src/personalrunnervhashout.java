@@ -20,7 +20,7 @@ public class personalrunnervhashout
 			{
 	 			ChatBotHossain chatbot1 = new ChatBotHossain();
 	 		
-	 			System.out.println ();
+	 			System.out.println (chatbot1.hey());
 	 
 	 			while (!x.equals("Bye"))
 	 			{	
