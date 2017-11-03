@@ -90,7 +90,7 @@ public class ChatBotZhu
 			{
 				response = transformIWantStatement(statement);
 			}
-			else if (findKeyword(statement, "I would like to switch",0) >= 0)
+			else if (findKeyword(statement, "switch me",0) >= 0)
 			{
 				transfer();
 			}
@@ -296,7 +296,7 @@ public class ChatBotZhu
 			 */
 			if (emotion < -2)
 			{	
-				return "Would you like to switch to a different representative? If you do please respond with 'I would like to switch' ";
+				return "Would you like to switch to a different representative? If you do please respond with 'switch me' ";
 			}	
 			return randomHappyResponses [r.nextInt(randomHappyResponses.length)];
 		}
