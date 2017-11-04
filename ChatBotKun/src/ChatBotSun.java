@@ -1,3 +1,4 @@
+public class ChatBotSun 
 {
 	import java.util.Random;
 
@@ -36,42 +37,99 @@
 						response = "Why don't you start the conversation?";
 					}
 					
-					if (findKeyword(statement,"sad") >=0 || findKeyword(statement, "depressed") >=0 || findKeyword(statement, "don't feel well")>=0)
+					if (findKeyword(statement,"sad") >=0  
 					{
 						response = "Don't be that way, that is unhealthy to your body";
 					   emotion --;
 					}
-					else if (findKeyword(statement, "stressed") >= 0 || findKeyword(statement, "chest pain") >=0 || findkeyword(statement, "crushed")>=0)
+					
+					if (findKeyword(statement, "depressed" >=0)
+					{
+						response = "Don't be that way, that is unhealthy to your body";
+						   emotion --;
+				    }
+							
+					if (findKeyword(statement, "don't feel well")>=0)
+					{
+						response = "Don't be that way, that is unhealthy to your body";
+						   emotion --;
+				    }
+					
+					else if (findKeyword(statement, "stressed") >= 0)  
 					{
 						response = "Why do you feel this way? Anything happened?";
 			                	emotion--;
 					}
 					
-					else if (findKeyword(statement, "abuse") >= 0 || findKeyword(statement, "suicidal") >=0 || findKeyword(statement, "live") >=0)
+					if  ((statement, "chest pain") >=0 )
+                    {
+                    	response = "Why do you feel this way? Anything happened?";
+	                	emotion--;
+                    }
+
+					if (findkeyword(statement, "crushed")>=0)
+					{ 
+						response = "Why do you feel this way? Anything happened?";
+	                	emotion--;
+					}
+
+
+
+
+					
+					else if (findKeyword(statement, "abuse") >= 0) findKeyword(statement, "live") >=0)
+					{
+						response = "Don't get too excited!! Give me your address and I'll send help right away !";
+						emotion++;
+					}
+					
+					if (findKeyword(statement, "suicidal") >=0 )
 					{
 						response = "Don't get too excited!! Give me your address and I'll send help right away !";
 						emotion++;
 					}
 
+					if (findKeyword(statement, "live") >=0)
+					{
+						response = "Don't get too excited!! Give me your address and I'll send help right away !";
+						emotion++;
+					}
 					// Response transforming I want to statement
 					else if (findKeyword(statement, "feel", 0) >= 0)
 					{
 						response = expressingEmotions(statement);
 					}
-					else if (findKeyword(statement, "defeated") >= 0 || findKeyword(statement, "hard") >=0)
+					else if (findKeyword(statement, "defeated") >= 0)
 					{
 						response = lifeStruggle(statement);
-					}	
-					else if (findKeyword(statement, "meaningless") >=0 || findKeyword(statement, "die") >=0 || findKeyword(statement, "hopeless")>=0)
+						
+					if (findKeyword(statement, "hard") >=0)
+					{
+						response = lifeStruggle(statement);
+					}
+					}
+					else if (findKeyword(statement, "meaningless") >=0) 
+					{
+						response =lifeEmergency(statement);
+					}
+					
+					if (findKeyword(statement, "die") >=0)
+					{
+						response =lifeEmergency(statement);
+					}
+					
+					if (findKeyword(statement, "hopeless")>=0)
 					{
 						response =lifeEmergency(statement);
 					}
 					else 
 					{
-						if (findKeyword(statement, "better")>=0 || findKeyword(statement, "I'm good now")>=0)
+						if (findKeyword(statement, "better")>=0)
 						{
 							response = getRandomResponse();
 						}
+						
+						if (findKeyword(statement, "I'm good now")>=0))
 						response = moreRandomresponsesAwaits();
 					}
 					
@@ -91,7 +149,27 @@
 					statement = statement.trim();
 					String lastChar = statement.substring(statement
 							.length() - 1);
-					if (lastChar.equals(".") || lastChar.equals("!") || lastChar.equals ("?") || lastChar.equals("...") || lastChar.equals(":(" ))
+					if (lastChar.equals("."))    
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals("!"))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals ("?"))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals("..."))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals(":(" )))
 					{
 						statement = statement.substring(0, statement.length() - 1);
 					}
@@ -119,10 +197,29 @@
 					statement = statement.trim();
 					String lastChar = statement.substring(statement
 							.length() - 1);
-					if (lastChar.equals(".") || lastChar.equals("!") || lastChar.equals ("?") || lastChar.equals("...") || lastChar.equals(":(" ))
+					if (lastChar.equals("."))    
 					{
-						statement = statement.substring(0, statement
-								.length() - 1);
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals("!"))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals ("?"))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals("..."))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals(":(" )))
+					{
+						statement = statement.substring(0, statement.length() - 1);
 					}
 					
 					2.int psn = findKeyword (statement, "I am", 0) ;
@@ -145,10 +242,29 @@
 					statement = statement.trim();
 					String lastChar = statement.substring(statement
 							.length() - 1);
-					if (lastChar.equals(".") || lastChar.equals("!") || lastChar.equals ("?") || lastChar.equals("...") || lastChar.equals(":(" ))
+					if (lastChar.equals("."))    
 					{
-						statement = statement.substring(0, statement
-								.length() - 1);
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals("!"))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals ("?"))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals("..."))
+					{
+						statement = statement.substring(0, statement.length() - 1);
+					}
+					
+					if (lastChar.equals(":(" )))
+					{
+						statement = statement.substring(0, statement.length() - 1);
 					}
 					int psnOfI = findKeyword (statement, "die", 0);
 					int psnOfYou = findKeyword (statement, "hopeless", psnOfI);
