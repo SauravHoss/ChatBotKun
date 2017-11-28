@@ -26,7 +26,7 @@ public class ChatBotWang
 		if (findKeyword(input, "no") >=0 && (a == 1))
 		// if you dont need help with depression then you talk with Darren's bot
 		{
-			System.out.println("Then you do no require my service, goodbye and have a nice day, Please consult with Darren for other issues");
+			System.out.println("Then you do no require my service, goodbye and have a nice day, Please consult with Darren for other issues \n");
 			ChatBotZhu chatbot1 = new ChatBotZhu();
 			
 			System.out.println (chatbot1.getGreeting());

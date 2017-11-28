@@ -142,7 +142,7 @@ public class ChatBotHossain
 			{
 			System.out.println("Alright, I'll stop playing around. What I was getting to with the numbers was...");
 			System.out.println("...just look at our game," + (rangeofnumberz+2) +" people care about. You matter, don't do anything dumb.");
-			System.out.println("Here, talk to my brother bot for help.");
+			System.out.println("Here, talk to my brother bot for help. \n");
 			
 			ChatBotWang chatbot1 = new ChatBotWang();
 			System.out.println (chatbot1.getGreeting());
