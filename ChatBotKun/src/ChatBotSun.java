@@ -1,5 +1,4 @@
-public class ChatBotSun 
-{
+
 	import java.util.Random;
 
 	/**
@@ -37,13 +36,13 @@ public class ChatBotSun
 						response = "Why don't you start the conversation?";
 					}
 					
-					if (findKeyword(statement,"sad") >=0  
+					if (findKeyword(statement,"sad") >=0) 
 					{
 						response = "Don't be that way, that is unhealthy to your body";
 					   emotion --;
 					}
 					
-					if (findKeyword(statement, "depressed" >=0)
+					if (findKeyword(statement, "depressed") >= 0)
 					{
 						response = "Don't be that way, that is unhealthy to your body";
 						   emotion --;
@@ -61,23 +60,19 @@ public class ChatBotSun
 			                	emotion--;
 					}
 					
-					if  ((statement, "chest pain") >=0 )
+					if  (findKeyword(statement, "chest pain") >=0 )
                     {
                     	response = "Why do you feel this way? Anything happened?";
 	                	emotion--;
                     }
 
-					if (findkeyword(statement, "crushed")>=0)
+					if (findKeyword(statement, "crushed")>=0)
 					{ 
 						response = "Why do you feel this way? Anything happened?";
 	                	emotion--;
 					}
-
-
-
-
 					
-					else if (findKeyword(statement, "abuse") >= 0) findKeyword(statement, "live") >=0)
+					else if ((findKeyword(statement, "abuse") >= 0) && (findKeyword(statement, "live") >=0))
 					{
 						response = "Don't get too excited!! Give me your address and I'll send help right away !";
 						emotion++;
@@ -129,8 +124,8 @@ public class ChatBotSun
 							response = getRandomResponse();
 						}
 						
-						if (findKeyword(statement, "I'm good now")>=0))
-						response = moreRandomresponsesAwaits();
+						if (findKeyword(statement, "I'm good now")>=0)
+						response = getRandomResponse();
 					}
 					
 					/*else
@@ -169,7 +164,7 @@ public class ChatBotSun
 						statement = statement.substring(0, statement.length() - 1);
 					}
 					
-					if (lastChar.equals(":(" )))
+					if (lastChar.equals(":(" ))
 					{
 						statement = statement.substring(0, statement.length() - 1);
 					}
@@ -217,12 +212,12 @@ public class ChatBotSun
 						statement = statement.substring(0, statement.length() - 1);
 					}
 					
-					if (lastChar.equals(":(" )))
+					if (lastChar.equals(":(" ))
 					{
 						statement = statement.substring(0, statement.length() - 1);
 					}
 					
-					2.int psn = findKeyword (statement, "I am", 0) ;
+					int psn = findKeyword (statement, "I am", 0) ;
 					String restOfStatement = statement.substring(psn + 4).trim();
 					return restOfStatement + "?" + " Try something in advices2() to see if you feel better)";
 					}
@@ -262,7 +257,7 @@ public class ChatBotSun
 						statement = statement.substring(0, statement.length() - 1);
 					}
 					
-					if (lastChar.equals(":(" )))
+					if (lastChar.equals(":(" ))
 					{
 						statement = statement.substring(0, statement.length() - 1);
 					}
@@ -271,7 +266,6 @@ public class ChatBotSun
 					
 					String restOfStatement = statement.substring(psnOfI + 1, psnOfYou).trim();
 					return "Why do you " + restOfStatement + " me?";
-			        return " HANG ON! DON'T DO SOMETHING STUPID!!" + lifeSavor()
 				}
 				
 
@@ -360,7 +354,7 @@ public class ChatBotSun
 				 * Pick a default response to use if nothing else fits.
 				 * @return a non-committal string
 				 */
-				private String getRandomResponse ()
+				private String getRandomResponse()
 				{
 					Random r = new Random ();
 					if (emotion == 0)
@@ -377,19 +371,19 @@ public class ChatBotSun
 				private String advices1() 
 				{
 					Random r = new Random();
-					return randomExpressingemotions [r..nextInt(randomexpressingemotion.length)];
+					return randomExpressingemotions [r.nextInt(randomExpressingemotions.length)];
 				}
 				
 				private String advices2()
 				{
 					Random r= new Random();
-					return randomLifestruggle[r.nextInt(randomLifestruggle.length)] 
+					return randomLifestruggle[r.nextInt(randomLifestruggle.length)] ;
 				}
 				
 				private String lifeSavor()
 				{
 					Random r= new Random();
-					return randomLifesavor [r.nextInt(randomLifesavor.length)]
+					return randomLifesavor [r.nextInt(randomLifesavor.length)];
 				}
 				private String [] randomNeutralResponses = {"Interesting, tell me more",
 						"Hmmm.",
@@ -408,7 +402,7 @@ public class ChatBotSun
 					"Get enough sleep so your body recovers better",
 					"Eat healthily, set up a routine for eating",
 					"Exercise more, it's the best way to release stress"
-				}
+				};
 				private String [] randomLifestruggle =
 				{ 
 					"You may need an therapist to help you feel better",
@@ -416,11 +410,13 @@ public class ChatBotSun
 					"Try to find a close friend and pour every out. If you can't find anyone... your parents should do it",
 					"Always do more work, people only tend to worry when they are not doing anything. If you load yourself with work, you will have no time to think about pathetic things",
 					"Forget about the struggles in life, learn to enjoy everything and act optimistic at all times"
-			   	}
+			   	};
 				private String [] randomLifesavor =
 				{ 
 					"AMBULACE IS ON THE WAY! WE'LL BE THERE IN ONE SEC",
 					"THE POLICE ARE ON THEIR WAY NOW",
 					"DON'T GIVE UP ON LIFE THAT EASY",
-				}
+				};
+	
 				 
+}
